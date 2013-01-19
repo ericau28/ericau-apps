@@ -15,11 +15,6 @@ var app = {
         }
     },
 
-    renderHomeView: function() {
-        $('body').html(this.homeTpl());
-        $('.search-key').on('keyup', $.proxy(this.findByName, this));
-    },
-
     initialize: function() {
         var self = this;
         this.store = new MemoryStore(function() {
@@ -27,6 +22,11 @@ var app = {
         });
         this.homeTpl = Handlebars.compile($("#home-tpl").html());
         this.employeeLiTpl = Handlebars.compile($("#employee-li-tpl").html());
+    },
+
+    renderHomeView: function() {
+        $('body').html(this.homeTpl());
+        $('.search-key').on('keyup', $.proxy(this.findByName, this));
     }
 
 };
